@@ -12,6 +12,7 @@ const DarkModeToggle = () => {
         setDarkMode(true);
       }
     }, []);
+    if (!isClient) return null; 
     
   
 
