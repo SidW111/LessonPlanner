@@ -1,84 +1,26 @@
-LessonPlanner
+# LessonPlanner – The Ultimate Lesson Planning Tool
 
-Overview
+**LessonPlanner** is a full-stack web application designed to help educators and trainers easily plan, schedule, and manage their lessons. With an intuitive interface and powerful features, LessonPlanner streamlines the process of organizing lesson content and schedules.
 
-LessonPlanner is a web application designed to help educators efficiently create, organize, and manage lesson plans. Built using modern web technologies, this tool simplifies the planning process, enabling teachers to focus on delivering high-quality education.
+## ✨ Features
+- **Lesson Management** – Create, edit, and delete lesson plans.
+- **Calendar Integration** – Visualize and schedule lessons with an interactive calendar.
+- **User Authentication** – Secure login and registration for teachers and administrators.
+- **Dashboard** – Personalized dashboard to overview upcoming lessons and recent activity.
+- **Responsive Design** – Fully responsive UI that works on desktops, tablets, and mobile devices.
+- **Real-Time Updates** – Receive live updates on changes to lesson plans and schedules.
 
-Features
+## 🛠 Tech Stack
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** JWT (JSON Web Token)
+- **Hosting & Deployment:** Render / Vercel (or your preferred service)
 
-User Authentication: Secure login and registration system.
+## 🚀 Installation & Setup
 
-Lesson Management: Create, edit, and delete lesson plans.
-
-Drag-and-Drop Functionality: Easily reorder lessons and tasks.
-
-Real-time Collaboration: Share lesson plans with other educators.
-
-Cloud Storage Integration: Save and retrieve lesson plans from AWS.
-
-Responsive Design: Fully functional across all devices.
-
-Tech Stack
-
-Frontend: Next.js, React.js, Tailwind CSS
-
-Backend: Node.js, Express.js
-
-Database: PostgreSQL with Prisma ORM
-
-Authentication: AWS Cognito
-
-Deployment: AWS (EC2, S3, RDS)
-
-Installation
-
-Prerequisites
-
-Ensure you have the following installed:
-
-Node.js (latest LTS version)
-
-PostgreSQL database
-
-AWS account with Cognito setup
-
-Steps to Run Locally
-
-Clone the repository
-
+### 1️⃣ Clone the Repository
+```sh
 git clone https://github.com/SidW111/LessonPlanner.git
 cd LessonPlanner
 
-Install dependencies
-
-npm install
-
-Set up environment variables
-Create a .env file in the root directory and add the required configurations:
-
-DATABASE_URL=your_postgresql_url
-AWS_COGNITO_CLIENT_ID=your_cognito_client_id
-AWS_COGNITO_USER_POOL_ID=your_user_pool_id
-
-Run the development server
-
-npm run dev
-
-Access the application
-Open http://localhost:3000 in your browser.
-
-Contribution
-
-Contributions are welcome! Feel free to open an issue or submit a pull request.
-
-How to Contribute
-
-Fork the repository
-
-Create a new branch (feature-name)
-
-Commit your changes
-
-Push to the branch
-
-Open a Pull Request
