@@ -1,18 +1,84 @@
-Lesson Planner 📝
-A Lesson Planner built with Next.js, TypeScript, and TailwindCSS that enables users to generate, edit, and download lesson plans using AI. The application supports dark mode, drag-and-drop lesson organization, and local storage for data persistence.
+LessonPlanner
 
-🚀 Features
-✅ AI-Generated Lesson Plans – Automatically create structured lesson plans using Google Gemini AI.
-✅ Editable Lesson Plan – Modify and customize lesson plans manually.
-✅ Dark Mode Support – Toggle between light and dark mode for better user experience.
-✅ Drag-and-Drop Lesson Outline – Reorder lesson items effortlessly.
-✅ Local Storage Persistence – Retains lesson data after page refresh.
-✅ Download as PDF – Export and download lesson plans in a structured PDF format.
+Overview
 
-🛠 Tech Stack
-Framework: Next.js (TypeScript)
-Styling: TailwindCSS
-AI Integration: Google Gemini API
-State Management: React Hooks (useState, useEffect)
-Drag-and-Drop: @hello-pangea/dnd
-PDF Generation: pdf-lib
+LessonPlanner is a web application designed to help educators efficiently create, organize, and manage lesson plans. Built using modern web technologies, this tool simplifies the planning process, enabling teachers to focus on delivering high-quality education.
+
+Features
+
+User Authentication: Secure login and registration system.
+
+Lesson Management: Create, edit, and delete lesson plans.
+
+Drag-and-Drop Functionality: Easily reorder lessons and tasks.
+
+Real-time Collaboration: Share lesson plans with other educators.
+
+Cloud Storage Integration: Save and retrieve lesson plans from AWS.
+
+Responsive Design: Fully functional across all devices.
+
+Tech Stack
+
+Frontend: Next.js, React.js, Tailwind CSS
+
+Backend: Node.js, Express.js
+
+Database: PostgreSQL with Prisma ORM
+
+Authentication: AWS Cognito
+
+Deployment: AWS (EC2, S3, RDS)
+
+Installation
+
+Prerequisites
+
+Ensure you have the following installed:
+
+Node.js (latest LTS version)
+
+PostgreSQL database
+
+AWS account with Cognito setup
+
+Steps to Run Locally
+
+Clone the repository
+
+git clone https://github.com/SidW111/LessonPlanner.git
+cd LessonPlanner
+
+Install dependencies
+
+npm install
+
+Set up environment variables
+Create a .env file in the root directory and add the required configurations:
+
+DATABASE_URL=your_postgresql_url
+AWS_COGNITO_CLIENT_ID=your_cognito_client_id
+AWS_COGNITO_USER_POOL_ID=your_user_pool_id
+
+Run the development server
+
+npm run dev
+
+Access the application
+Open http://localhost:3000 in your browser.
+
+Contribution
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+How to Contribute
+
+Fork the repository
+
+Create a new branch (feature-name)
+
+Commit your changes
+
+Push to the branch
+
+Open a Pull Request
