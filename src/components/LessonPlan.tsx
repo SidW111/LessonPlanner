@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -7,8 +7,22 @@ import { generatePDF } from "@/utils/pdfGenerator";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import DarkModeToggle from "@/components/DarkModeToggle";
 
+interface LessonData {
+    topic: string;
+    date: string;
+    subject: string;
+    gradeLevel: string;
+    mainConcept: string;
+    materials: string;
+    learningObjectives: string;
+    assessment: string;
+    notes: string;
+    lessonOutline: string;
+    lessonOutlineItems: { id: string; content: string }[];
+  }
+
 interface LessonPlanProps {
-  lessonData: any;
+  lessonData: LessonData;
   setLessonData: (data: any) => void;
 }
 

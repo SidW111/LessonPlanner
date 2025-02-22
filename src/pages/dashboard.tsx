@@ -7,10 +7,25 @@ import { generateLessonPlan } from "@/services/geminiApi";
 import LessonPlan from "@/components/LessonPlan"; // ✅ Import the Lesson Plan component
 import DarkModeToggle from "@/components/DarkModeToggle";
 
+interface LessonData {
+  topic: string;
+  date: string;
+  subject: string;
+  gradeLevel: string;
+  mainConcept: string;
+  materials: string;
+  learningObjectives: string;
+  lessonOutline: string;
+  assessment: string;
+  notes: string;
+  lessonOutlineItems: { id: string; content: string }[];
+}
+
+
 const Dashboard = () => {
-  const [lessonData, setLessonData] = useState({
+  const [lessonData, setLessonData] = useState<LessonData>({
     topic: "",
-    date: new Date().toISOString().split("T")[0], // Default to today's date
+    date: new Date().toISOString().split("T")[0], 
     subject: "",
     gradeLevel: "",
     mainConcept: "",
@@ -19,9 +34,9 @@ const Dashboard = () => {
     lessonOutline: "",
     assessment: "",
     notes: "",
+    lessonOutlineItems: []
   });
 
-  const [aiLessonPlan, setAiLessonPlan] = useState("");
   const [loading, setLoading] = useState(false);
   const [showEditablePlan, setShowEditablePlan] = useState(false);
 
@@ -33,7 +48,6 @@ const Dashboard = () => {
     setLoading(true);
     const result = await generateLessonPlan(lessonData);
     console.log("AI Response", result)
-    setAiLessonPlan(result);
     setLessonData((prev) => ({ ...prev, lessonOutline: result })); // Store AI response in state
     setLoading(false);
     setShowEditablePlan(true); // ✅ Show the editable version

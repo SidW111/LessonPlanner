@@ -1,4 +1,16 @@
-export const generateLessonPlan = async (lessonData: any) => {
+interface LessonData {
+    topic: string;
+    date: string;
+    subject: string;
+    gradeLevel: string;
+    mainConcept: string;
+    materials: string;
+    learningObjectives: string;
+    assessment?: string;
+    notes?: string;
+  }
+
+export const generateLessonPlan = async (lessonData: LessonData): Promise<string> => {
     const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
     if (!API_KEY) {
       console.error("🚨 API Key is missing! Check your .env.local file.");
@@ -79,7 +91,7 @@ export const generateLessonPlan = async (lessonData: any) => {
       }
   
       const data = await response.json();
-      console.log("🔍 AI Raw Response:", data); // ✅ Debugging
+      console.log("🔍 AI Raw Response:", data); 
   
       return data.candidates?.[0]?.content?.parts?.[0]?.text || "Error: No response from AI.";
     } catch (error) {

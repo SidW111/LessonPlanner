@@ -1,35 +1,29 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-const DarkModeToggle = () => {
-    const [darkMode, setDarkMode] = useState(false); // ✅ Start with false to avoid hydration errors
-    const [isClient, setIsClient] = useState(false); // ✅ Check if client-side
-    
-    useEffect(() => {
-      setIsClient(true);
-      const storedTheme = localStorage.getItem("theme");
-      if (storedTheme === "dark") {
-        document.documentElement.classList.add("dark");
-        setDarkMode(true);
-      }
-    }, []);
-    if (!isClient) return null; 
-    
-  
+const DarkModeToggle: React.FC = () => {
+  const [darkMode, setDarkMode] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    if (darkMode) {
+    setIsClient(true);
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark") {
       document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+      setDarkMode(true);
     }
-  }, [darkMode]);
+  }, []);
+
+  if (!isClient) return null; // ✅ Prevents SSR mismatch
 
   return (
     <button
-      onClick={() => setDarkMode(!darkMode)}
-      className="px-4 py-2 rounded bg-gray-800 text-white dark:bg-gray-200 dark:text-black transition"
+      onClick={() => {
+        const newMode = !darkMode;
+        setDarkMode(newMode);
+        document.documentElement.classList.toggle("dark", newMode);
+        localStorage.setItem("theme", newMode ? "dark" : "light");
+      }}
+      className="p-2 border rounded"
     >
       {darkMode ? "☀ Light Mode" : "🌙 Dark Mode"}
     </button>

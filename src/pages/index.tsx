@@ -4,9 +4,8 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 
-type Props = {};
 
-const Login = (props: Props) => {
+const Login = () => {
   const [email,setEmail] =  useState("");
   const [password,setPassword] = useState("");
   const [error,setError] = useState("");

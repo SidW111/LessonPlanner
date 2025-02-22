@@ -1,6 +1,21 @@
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 
-export const generatePDF = async (lessonData: any) => {
+interface LessonData {
+  topic: string;
+  date: string;
+  subject: string;
+  gradeLevel: string;
+  mainConcept: string;
+  materials: string;
+  learningObjectives: string;
+  assessment: string;
+  notes: string;
+  lessonOutline: string;
+  lessonOutlineItems: { id: string; content: string }[];
+}
+
+
+export const generatePDF = async (lessonData: LessonData) => {
   const pdfDoc = await PDFDocument.create();
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const boldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);

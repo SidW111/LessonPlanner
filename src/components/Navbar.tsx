@@ -2,9 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { Button } from "./ui/button";
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
     const router = useRouter();
     const handleLogout = () => {
         router.push("/");
