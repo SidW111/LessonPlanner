@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { generatePDF } from "@/utils/pdfGenerator";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import DarkModeToggle from "@/components/DarkModeToggle";
-
+import { DropResult } from "@hello-pangea/dnd";
 interface LessonData {
     topic: string;
     date: string;
@@ -23,14 +23,14 @@ interface LessonData {
 
 interface LessonPlanProps {
   lessonData: LessonData;
-  setLessonData: (data: any) => void;
+  setLessonData: (data: LessonData | ((prev: LessonData) => LessonData)) => void;
 }
 
 const LessonPlan: React.FC<LessonPlanProps> = ({ lessonData, setLessonData }) => {
   // ✅ Ensure `lessonOutlineItems` always exists as an array
   useEffect(() => {
     if (!lessonData.lessonOutlineItems || !Array.isArray(lessonData.lessonOutlineItems)) {
-      setLessonData((prev: any) => ({
+      setLessonData((prev: LessonData) => ({
         ...prev,
         lessonOutlineItems: [
           { id: "1", content: "Introduction" },
@@ -43,20 +43,20 @@ const LessonPlan: React.FC<LessonPlanProps> = ({ lessonData, setLessonData }) =>
   }, [lessonData, setLessonData]);
 
   const handleChange = (field: string, value: string) => {
-    setLessonData((prev: any) => ({
+    setLessonData((prev: LessonData) => ({
       ...prev,
       [field]: value,
       lessonOutlineItems: prev.lessonOutlineItems || [],
     }));
   };
 
-  const handleDragEnd = (result: any) => {
+  const handleDragEnd = (result: DropResult) => {
     if (!result.destination) return;
     const newItems = Array.from(lessonData.lessonOutlineItems || []);
     const [movedItem] = newItems.splice(result.source.index, 1);
     newItems.splice(result.destination.index, 0, movedItem);
     
-    setLessonData((prev: any) => ({
+    setLessonData((prev: LessonData) => ({
       ...prev,
       lessonOutlineItems: newItems,
     }));
@@ -119,7 +119,7 @@ const LessonPlan: React.FC<LessonPlanProps> = ({ lessonData, setLessonData }) =>
             {(provided) => (
               <div ref={provided.innerRef} {...provided.droppableProps} className="space-y-2">
                 {lessonData.lessonOutlineItems && lessonData.lessonOutlineItems.length > 0 ? (
-                  lessonData.lessonOutlineItems.map((item: any, index: number) => (
+                  lessonData.lessonOutlineItems.map((item: { id: string; content: string }, index: number) => (
                     <Draggable key={String(item.id)} draggableId={String(item.id)} index={index}>
                       {(provided) => (
                         <div
