@@ -94,8 +94,8 @@ export const generateLessonPlan = async (lessonData: LessonData): Promise<string
     console.log("🔍 Gemini Response:", responseText);
 
     return responseText || "Error: No valid AI response.";
-  } catch (error: any) {
-    console.error("🚨 API Request Failed:", error.message || error);
-    return `Error generating lesson plan: ${error.message}`;
+  } catch (error) {
+    console.error("🚨 API Request Failed:");
+    return `Error generating lesson plan}`;
   }
 };
