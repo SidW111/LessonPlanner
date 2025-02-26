@@ -96,6 +96,6 @@ export const generateLessonPlan = async (lessonData: LessonData): Promise<string
     return responseText || "Error: No valid AI response.";
   } catch {
     console.log("🚨 API Request Failed:");
-    return `Error generating lesson plan}`;
+    return `Error generating lesson plan`;
   }
 };
